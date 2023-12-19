@@ -17,8 +17,8 @@ const Commnets = sequelize.define('Commnets', {
   // Other model options go here
 });
 
-(async() => { //await은 비동기 어쩌구라 async()를 붙여줌.
-await Commnets.sync(); //동기화과정. sync는 await이라는 애랑 같이 붙음.
+(async() => { //await은 비동기
+await Commnets.sync(); //동기화과정. sync는 await와 같이 붙음.
 })();
 
 // req.body 오는 값을 읽기 위해 적용
@@ -30,8 +30,8 @@ app.set('view engine', 'ejs');
 
 // index page
 app.get('/', async function(req, res) { 
-    const comments = await Commnets.findAll(); //커멘트의 모든데이터 읽어와서 코멘츠에 넣어
-    res.render('index', { comments: comments }); //코멘츠를 변수로 보낼거야.
+    const comments = await Commnets.findAll(); //커멘트의 모든데이터 읽어와서 코멘츠에 넣음
+    res.render('index', { comments: comments }); //코멘츠를 변수로 보냄.
 });
 
 app.post('/create', async function(req, res) {
