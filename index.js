@@ -30,8 +30,8 @@ app.set('view engine', 'ejs');
 
 // index page
 app.get('/', async function(req, res) { 
-    const comments = await Commnets.findAll(); //커멘트의 모든데이터 읽어와서 코멘츠에 넣음
-    res.render('index', { comments: comments }); //코멘츠를 변수로 보냄.
+    const comments = await Commnets.findAll(); //Commnets의 모든데이터 읽어와서 comments에 넣음
+    res.render('index', { comments: comments }); //comments를 변수로 보냄.
 });
 
 app.post('/create', async function(req, res) {
@@ -43,7 +43,7 @@ app.post('/create', async function(req, res) {
 
 app.post('/update/:id', async function(req, res) {
     const {content} = req.body
-    const {id} = req.params //sqlite에서 알게모르게 첫행부터 1번으로 아이디를 제공함.
+    const {id} = req.params //sqlite에서 첫행부터 1번으로 아이디를 제공함.
     await Commnets.update({ content: content }, {
     where: {
       id: id
